@@ -51,18 +51,19 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 250px;
+  min-width: fit-content;
   padding: 10px;
   color: $basic-white;
   background-color: $main-color;
-  font-family: "Arial", sans-serif;
-  font-weight: 400;
+  font-family: "Coda Caption", "Arial", sans-serif;
   font-size: 20px;
-  border-radius: 10px;
+  font-weight: 800;
+  border-radius: 8px;
   border: none;
 
   &:hover {
-    background-color: $btn-hover;
+    color: $main-color;
+    background-color: $basic-white;
   }
 
   &:active {
@@ -73,7 +74,6 @@ button {
 .heading {
   font-family: "Coda Caption", "Arial", sans-serif;
   font-size: 32px;
-  font-weight: 800;
 
   @media (max-width: $tablet-width) {
     font-size: 24px;
