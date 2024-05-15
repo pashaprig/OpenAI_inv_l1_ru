@@ -1,18 +1,52 @@
 /* Fonts */
 
-// Montserrat
-
+// Coda Caption
 @font-face {
-  font-family: "Montserrat";
+  font-family: "Coda Caption";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: local("Coda Caption ExtraBold"),
+    url("../fonts/сodaCaption/CodaCaption-ExtraBold.woff2") format("woff2"),
+    url("../fonts/сodaCaption/CodaCaption-ExtraBold.woff") format("woff"),
+    url("../fonts/сodaCaption/CodaCaption-ExtraBold.ttf") format("truetype");
+}
+
+//Proxima Nova
+@font-face {
+  font-family: "Proxima Nova";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: local("Montserrat Regular"),
-    url("../fonts/montserrat/Montserrat-Regular400.woff2") format("woff2"),
-    url("../fonts/montserrat/Montserrat-Regular400.woff") format("woff"),
-    url("../fonts/montserrat/Montserrat-Regular400.ttf") format("truetype");
+  src: local("Proxima Nova Regular"),
+    url("../fonts/proximaNova/proximanova_regular.woff2") format("woff2"),
+    url("../fonts/proximaNova/proximanova_regular.woff") format("woff"),
+    url("../fonts/proximaNova/proximanova_regular.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: "Proxima Nova";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local("Proxima Nova SemiBold"),
+    url("../fonts/proximaNova/proximanova_semibold.woff2") format("woff2"),
+    url("../fonts/proximaNova/proximanova_semibold.woff") format("woff"),
+    url("../fonts/proximaNova/proximanova_semibold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Proxima Nova";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Proxima Nova Bold"),
+    url("../fonts/proximaNova/proximanova_bold.woff2") format("woff2"),
+    url("../fonts/proximaNova/proximanova_bold.woff") format("woff"),
+    url("../fonts/proximaNova/proximanova_bold.ttf") format("truetype");
+}
+
+// Montserrat
 @font-face {
   font-family: "Montserrat";
   font-style: normal;
@@ -25,7 +59,6 @@
 }
 
 // Inter
-
 @font-face {
   font-family: "Inter";
   font-style: normal;
@@ -36,3 +69,15 @@
     url("../fonts/inter/Inter-Regular.woff") format("woff"),
     url("../fonts/inter/Inter-Regular.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local("Inter Bold"),
+    url("../fonts/inter/Inter-Bold.woff2") format("woff2"),
+    url("../fonts/inter/Inter-Bold.woff") format("woff"),
+    url("../fonts/inter/Inter-Bold.ttf") format("truetype");
+}
+

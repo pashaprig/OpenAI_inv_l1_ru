@@ -70,26 +70,10 @@ button {
   }
 }
 
-.container {
-  box-sizing: border-box;
-  margin: 0 auto;
-  padding: 0 50px;
-
-  @media (max-width: $tablet-width) {
-    padding: 0 25px;
-  }
-}
-
 .heading {
-  margin-bottom: 30px;
-  font-family: "Montserrat", "Arial", sans-serif;
-  font-size: 48px;
-  font-weight: 400;
-
-  &--small {
-    margin-bottom: 25px;
-    font-size: 36px;
-  }
+  font-family: "Coda Caption", "Arial", sans-serif;
+  font-size: 32px;
+  font-weight: 800;
 
   @media (max-width: $tablet-width) {
     font-size: 24px;
