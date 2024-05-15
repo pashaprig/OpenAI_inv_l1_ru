@@ -53,6 +53,7 @@ button {
   justify-content: center;
   min-width: fit-content;
   padding: 10px;
+  min-width: 210px;
   color: $basic-white;
   background-color: $main-color;
   font-family: "Coda Caption", "Arial", sans-serif;
@@ -62,12 +63,23 @@ button {
   border: none;
 
   &:hover {
-    color: $main-color;
+    color: $basic-black;
     background-color: $basic-white;
   }
-
+f
   &:active {
     opacity: 0.8;
+  }
+
+  &--reverse {
+    color: $basic-black;
+    background-color: $basic-white;
+
+    &:hover {
+      color: $basic-white;
+      background-color: $main-color;
+      outline: 1px solid $basic-white;
+    }
   }
 }
 
