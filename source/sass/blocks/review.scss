@@ -1,77 +1,69 @@
 .review {
   display: flex;
   flex-direction: column;
-  min-width: 0;
-  margin-bottom: 125px;
-  font-family:"Inter", "Arial", sans-serif;
-  font-size: 16px;
+  gap: 50px;
+  padding: 100px 50px;
 
   @media (max-width: $tablet-width) {
-    margin-bottom: 60px;
+    padding: 75px 0px;
+    gap: 25px;
   }
 }
 
 .review__heading {
   text-align: center;
+  color: $main2-color;
+  text-transform: uppercase;
+}
+
+.review__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: space-between;
 
   @media (max-width: $tablet-width) {
-    text-align: left;
-    font-size: 36px;
+    padding: 0 1px;
+    flex-direction: column;
   }
 }
 
-.review__about {
-  text-align: center;
-  margin-bottom: 40px;
-  padding: 0 150px;
-
-  @media (max-width: $tablet-width) {
-    text-align: left;
-    padding: 0;
-  }
-}
-
-.review__card {
-  box-sizing: border-box;
+.review__item {
   display: flex;
   flex-direction: column;
-  margin: 0 20px;
-  padding: 15px;
-  background: $basic-white;
-  border: 1px solid $att-color;
-  border-radius: 15px;
-
-  @media (max-width: $tablet-width) {
-    margin: 0;
-  }
-}
-
-.review__avatae-wrapper {
-  display: flex;
-  gap: 15px;
   align-items: center;
-  margin-bottom: 20px;
-}
+  text-align: center;
+  box-sizing: border-box;
+  max-width: calc(33.33% - 30px);
+  padding: 12px 25px;
+  border-radius: 20px;
+  background: $main-color;
 
-.review__name-wrapper {
-  display: flex;
-  flex-direction: column;
-
-  cite {
-    font-style: normal;
+  @media (max-width: $tablet-width) {
+    max-width: unset;
+    width: 100%;
   }
 }
 
-.review__img {
-  object-fit: cover;
+.review__avatar {
+  margin-bottom: 15px;
   border-radius: 50%;
 }
 
-.review__blockquote {
-  margin-bottom: 40px;
+.review__name {
+  margin-bottom: 10px;
+  font-weight: 700;
+  text-transform: capitalize;
 }
 
-.review__time {
-  color: $main2-color;
-  margin-top: auto;
+.review__job{
+  font-weight: 400;
+}
+
+.review__line {
+  box-sizing: border-box;
+  display: flex;
+  width: calc(100% - 20px);
+  margin: 15px 0;
+  border-bottom: 1px solid $main2-color;
 }
