@@ -1,24 +1,33 @@
 .come-on {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding: 45px 0 45px 25px;
   color: $basic-white;
-  background: $main-color no-repeat 100% 100% url("../img/bcg/come-on-bcg.png");
-  background-size: contain;
+  background:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.2) 100%),
+    url("../img/bcg/come-on-bcg.webp") lightgray 50% / cover no-repeat;
 
   @media (max-width: $tablet-width) {
-    background: $main-color no-repeat 10% 100% url("../img/bcg/come-on-bcg.png");
-    background-size: cover;
+    padding-bottom: 0;
+  }
+}
 
-    .come-on__heading,
-    .come-on__about {
-      text-align: center;
-    }
+.come-on__heading {
+  max-width: 900px;
+  font-size: 48px;
+  text-transform: capitalize;
+
+  @media (max-width: $tablet-width) {
+    font-size: 36px;
   }
 }
 
 .come-on__about {
-  margin-bottom: 40px;
+  margin: 25px 0;
+  font-family: "Coda Caption", "Arial", sans-serif;
+  font-weight: 800;
+
+  @media (max-width: $tablet-width) {
+    font-size: 16px;
+  }
 }

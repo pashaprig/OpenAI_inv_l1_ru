@@ -66,7 +66,7 @@ button {
     color: $basic-black;
     background-color: $basic-white;
   }
-f
+
   &:active {
     opacity: 0.8;
   }
@@ -79,6 +79,22 @@ f
       color: $basic-white;
       background-color: $main-color;
       outline: 1px solid $basic-white;
+    }
+  }
+
+  &:disabled {
+    background: #a4a4a4;
+    color: #646464;
+    cursor: not-allowed;
+
+    &:hover {
+      background: #a4a4a4;
+      color: #646464;
+      outline: unset;
+    }
+
+    &:active {
+      opacity: 1;
     }
   }
 }

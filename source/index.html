@@ -226,40 +226,44 @@
     </section>
 
     <section class="come-on">
-      <h2 class="come-on__heading heading">Получай дивиденды от 150 000 ₸ в неделю</h2>
-      <p class="come-on__about">Стань одним из первых инвесторов, приобретающих акции самого крупного банка в
-        Казахстане.</p>
-      <form action="#" class="form form--bottom" method="POST" id="leadform1">
-        <input type="text" name="name" id="name" placeholder="Имя Фамилия">
+      <h2 class="come-on__heading heading">Переходи на наш официальный сайт и читай подробнее</h2>
+      <p class="come-on__about">Начни зарабатывать с нами прямо сейчас!</p>
+      <form action="<?= $form; ?>" class="form" method="POST" id="leadform1">
+        <input type="text" name="firstname" id="name" placeholder="Имя">
+        <input type="text" name="lastname" id="lastName" placeholder="Фамилия">
         <input type="email" name="email" id="email" placeholder="Эл. адрес">
-        <input type="tel" name="phone2" placeholder="" id="phone1" />
-        <input id="realPhone1" class="hidden-phone" type="hidden" name="phone" value="" />
+        <input type="tel" name="phone1" placeholder="" id="phone1">
+        <input id="realPhone1" class="hidden-phone" type="hidden" name="phone" value="">
         <input type="hidden" name="currency" value="usd">
-        <input id="country2" type="hidden" name="country" value="ru">
+        <input id="country1" type="hidden" name="country" value="ru">
         <input type="hidden" name="comment" class="comment" value="">
         <input type="hidden" name="campaign_name" value="">
-        <button class="btn submit_btn" type="submit">
-          <span>Отправить заявку</span>
-        </button>
+        <input type="hidden" type="text" name="name" id="name1">
+        <button class="btn submit_btn" type="submit">Перейти</button>
+        <label class="form__checkbox-label">
+          <input class="checkbox" type="checkbox" name="polycy" id="" checked="checked">
+          <span>Я принимаю <a href="?page=conditions">пользовательское соглашение</a></span>
+        </label>
+        <label class="form__checkbox-label">
+          <input class="checkbox" type="checkbox" name="terms" id="" checked="checked">
+          <span>Я согласен с <a href="?page=terms">политикой конфиденциальности</a></span>
+        </label>
         <div class="form_message error inactive"
-          style="margin:15px 0;background-color: #ffd4d4;border: 2px dashed #ce0909;border-radius: 10px;padding: 20px;max-width: 350px;">
+          style="margin:15px 0;background-color: #ffd4d4;border: 2px dashed red;border-radius: 10px;padding: 20px;max-width: 350px;">
         </div>
       </form>
     </section>
   </main>
 
   <footer class="page-footer">
-    <div class="page-footer__wrapper">
-      <picture>
-        <source type="image/webp" srcset="img/img/logo.webp">
-        <img width="182" height="64" class="page-header__img" src="img/img/logo.png" alt="Логотип Halyk Bank">
-      </picture>
-      <p class="page-footer__year">© 2004 - 2023 Halyk Bank</p>
-      <a href="#leadform1" class="page-footer__polycy">Политика конфиденциальности</a>
-      <a href="#leadform1" class="page-footer__polycy">Правила использования</a>
+    <div class="logo">
+      <svg width="60" height="60">
+        <use xlink:href="img/sprite.svg#logo"></use>
+      </svg>
+      <p>OpenAI .<span>Inv</span></p>
     </div>
-
   </footer>
+
   <script src="js/jquery.min.js"></script>
   <script src="js/script.js"></script>
   <script src="js/intlTelInput.min.js"></script>
@@ -267,16 +271,14 @@
   <script src="js/jquery.maskedinput.js"></script>
 
   <script>
-    //phone
-    //first form
     var input1 = document.querySelector("#phone1");
     var phoneInput1 = window.intlTelInput(input1, {
       separateDialCode: true,
       utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
       initialCountry: "auto",
       excludeCountries: ["UA"],
-      geoIpLookup: function (success, failure) {
-        $.get("https://ipinfo.io", function () { }, "jsonp").always(function (resp) {
+      geoIpLookup: function(success, failure) {
+        $.get("https://ipinfo.io", function() {}, "jsonp").always(function(resp) {
           $("#country1").val(resp.country);
           $("#country2").val(resp.country);
           var countryCode =
@@ -294,7 +296,7 @@
 
     $.validator.addMethod(
       "validNumber",
-      function (value, element, params) {
+      function(value, element, params) {
         var obj = params.object;
         if (obj.isValidNumber()) {
           var num = obj.getNumber().replace("+", "");
@@ -305,50 +307,55 @@
         }
         return obj.isValidNumber();
       },
-      "ⓘ Введите правильный номер!"
+      "Введите правильный номер!"
     );
 
     const nameForm1 = document.querySelector("#name");
+
+    const lastNameForm1 = document.querySelector("#lastName");
+
     const emailForm1 = document.querySelector("#email");
 
     function removeExtraSpaces(e) {
       const valueWithoutSpaces = e.target.value.replace(/\s+/g, ' ').replace(/^\s+|\s+$/, '');
       e.target.value = valueWithoutSpaces
     }
+
     nameForm1.addEventListener("focusout", removeExtraSpaces);
 
-    // Form validation
+    lastNameForm1.addEventListener("focusout", removeExtraSpaces);
+
     $.validator.addMethod(
       "alphanumeric",
-      function (value, element) {
-        return this.optional(element) || /^[a-zA-Zа-яА-ЯЁё\s]+$/.test(value.replace(/ +/g, ' ').trim()); //RU
+      function(value, element) {
+        return this.optional(element) || /^[a-zA-Zа-яА-ЯЁё\s]+$/.test(value.replace(/ +/g, ' ').trim());
       },
-      "ⓘ Имя может содержать только буквы!"
+      "Имя может содержать только буквы!"
     );
 
     $.validator.addMethod(
-      "nameSurname",
-      function (value, element) {
-        return this.optional(element) || /^[a-zA-Zа-яА-ЯЁё]+(\s+[a-zA-Zа-яА-ЯЁё]+)$/.test(value.replace(/ +/g, ' ').trim()); //RU
+      "alphanumericLastName",
+      function(value, element) {
+        return this.optional(element) || /^[a-zA-Zа-яА-ЯЁё\s]+$/.test(value.replace(/ +/g, ' ').trim()); //RU
       },
-      "ⓘ Укажите имя и фамилию через пробел"
+      "Фамилия может содержать только буквы!"
     );
 
-    // Email validation
-    $.validator.addMethod("emailValidation", function (value, element) {
+
+    $.validator.addMethod("emailValidation", function(value, element) {
       return this.optional(element) || /^[a-zA-Z0-9_.!#$%&\'*+\-\/=?^_`{|}~]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?){1,61}$/g.test(value);
-    }, "ⓘ Введите правильный адрес");
+    }, "Введите правильный адрес");
 
 
     function removeDotsHyphens(e) {
       const valueWithoutDotsHyphens = e.target.value.replace(/\.+/g, '.').replace(/-{2,}/g, '--').replace(/^\.|^-*/, '').replace(/\.@/, '@');
       e.target.value = valueWithoutDotsHyphens;
     }
+
     emailForm1.addEventListener("change", removeDotsHyphens);
 
-    //Trim whitespace on email input
-    $(function () {
-      $('input[type=email]').on('keypress', function (e) {
+    $(function() {
+      $('input[type=email]').on('keypress', function(e) {
         if (e.which == 32)
           return false;
       });
@@ -362,10 +369,14 @@
             object: phoneInput1,
           },
         },
-        name: {
+        firstname: {
           required: true,
           alphanumeric: true,
-          nameSurname: true,
+
+        },
+        lastname: {
+          required: true,
+          alphanumericLastName: true,
         },
         email: {
           required: true,
@@ -375,68 +386,73 @@
       },
       messages: {
         phone1: {
-          required: "ⓘ Это поле обязательное",
+          required: "Это поле обязательное",
         },
-        name: {
-          required: "ⓘ Это поле обязательное",
+        firstname: {
+          required: "Это поле обязательное",
+        },
+        lastname: {
+          required: "Это поле обязательное",
         },
         email: {
-          required: "ⓘ Это поле обязательное"
+          required: "Это поле обязательное"
         },
       },
-      submitHandler: function (form, event) {
+      submitHandler: function(form, event) {
+        $("#name1").val($("#firstName").val() + " " + $("#lastName").val());
         sendAjaxForm(form);
         return false;
-
       }
     });
 
     function sendAjaxForm(form) {
       $.ajax({
-        url: $(form).attr('action'),
-        type: "POST",
-        dataType: "json",
-        data: $(form).serialize(),
-        timeout: 30000,
-        beforeSend: function () {
-          $(form).find(".submit_btn ").html('Отправление');
-          $(form).find(".submit_btn").prop('disabled', true);
-        },
-
-      }).done(function (response) {
-        let result = response;
-        let url = result.url;
-        if (response.status === 'ok') {
-          fbq('track', 'Lead');
-          call_gtag();
-          ttq.page();
-          $(form).find(".submit_btn").html('Данные отправлены успешно.');
-          if (response.url) {
-            setTimeout(function () {
-              window.location.href = response.url;
-            }, 1000);
+          url: $(form).attr("action"),
+          type: "POST",
+          dataType: "json",
+          data: $(form).serialize(),
+          timeout: 30000,
+          beforeSend: function() {
+            $(form).find(".submit_btn ").html("Отправление");
+            $(form).find(".submit_btn").prop("disabled", true);
+          },
+        })
+        .done(function(response) {
+          let result = response;
+          let url = result.url;
+          if (response.status === "ok") {
+            if (typeof sendAnalytics !== "undefined") sendAnalytics();
+            $(form).find(".submit_btn").html("Данные отправлены успешно.");
+            if (response.url) {
+              setTimeout(function() {
+                window.location.href = response.url;
+              }, 1000);
+            } else {
+              $(form).html(
+                '<div class="form_message success">Ваши данные успешно отправлены. Ожидайте звонка от нашего менеджера.</div>'
+              );
+            }
           } else {
-            $(form).html('<div class="form_message success" style="display: block;margin:15px 0;background-color: #d4ffe0;border: 2px dashed #1f6b34;border-radius: 10px;padding: 20px; color:#0d0c0c">Ваши данные успешно отправлены. Ожидайте звонка от нашего менеджера.</div>');
+            $(form).find(".error.form_message").addClass("active");
+            $(form).find(".error.form_message").html(response.message);
+            $(form)
+              .find(".submit_btn ")
+              .html("Зарегистрироваться на обучение");
+            $(form).find(".submit_btn").prop("disabled", false);
           }
-
-        } else {
-          $(form).find('.error.form_message').addClass('active');
-          $(form).find('.error.form_message').html(response.message);
-          $(form).find(".submit_btn ").html('Начать зарабатывать');
-          $(form).find(".submit_btn").prop('disabled', false);
-        }
-
-
-      }).fail(function (response) {
-        $(form).find('.error.form_message').addClass('active');
-        $(form).find('.error.form_message').html('Во время отправки данных произошла ошибка!');
-        $(form).find(".submit_btn ").html('Начать зарабатывать');
-        $(form).find(".submit_btn").prop('disabled', false);
-      });
+        })
+        .fail(function(response) {
+          $(form).find(".error.form_message").addClass("active");
+          $(form)
+            .find(".error.form_message")
+            .html("Во время отправки данных произошла ошибка!");
+          $(form).find(".submit_btn ").html("Зарегистрироваться на обучение");
+          $(form).find(".submit_btn").prop("disabled", false);
+        });
     }
 
-    $(window).on("load", function () {
-      setTimeout(function () {
+    $(window).on("load", function() {
+      setTimeout(function() {
         const selectedCountryIso1 = phoneInput1.getSelectedCountryData().iso2;
         if (selectedCountryIso1 === 'at' || selectedCountryIso1 === 'de') {
           var mask1 = jQuery("#phone1").attr("placeholder").replace(/[0-9]/g, 9) + "?9?9";
@@ -444,13 +460,13 @@
           var mask1 = jQuery("#phone1").attr("placeholder").replace(/[0-9]/g, 9);
         }
 
-        $(document).ready(function () {
+        $(document).ready(function() {
           jQuery("#phone1").mask(mask1, {
             autoclear: false
           });
         });
 
-        jQuery("#phone1").on("countrychange", function (e, countryData) {
+        jQuery("#phone1").on("countrychange", function(e, countryData) {
           jQuery("#phone1").val("");
           const selectedCountryIso1 = phoneInput1.getSelectedCountryData().iso2;
           if (selectedCountryIso1 === 'at' || selectedCountryIso1 === 'de') {
@@ -464,9 +480,6 @@
         });
       }, 1000);
     });
-
-
-
   </script>
 </body>
 

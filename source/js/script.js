@@ -3,12 +3,10 @@
 class App {
   init() {
     this.hideText();
+    this.isPolicyChecked();
   }
 
-  constructor() {
-    // this.iframe = document.querySelector('iframe');
-
-  }
+  constructor() {}
 
   hideText() {
     const cards = document.querySelectorAll(".about__card")
@@ -30,6 +28,30 @@ class App {
       });
     }
     cards.forEach((c) => { c.addEventListener('click', togleText(c)) })
+  }
+
+  isPolicyChecked() {
+    const leadform1 = document.querySelector('#leadform1');
+
+    const isChecked = (form) => {
+      const policyCheck = form.querySelector('[name="polycy"]')
+      const termsCheck = form.querySelector('[name="terms"]')
+      const sbmtBtn = form.querySelector('.submit_btn')
+
+      const checkPolicy = () => {
+        if (policyCheck.checked && termsCheck.checked) {
+          sbmtBtn.removeAttribute("disabled");
+        } else {
+          sbmtBtn.setAttribute("disabled", "disabled");
+        }
+      };
+
+      checkPolicy()
+      policyCheck.addEventListener('click', checkPolicy);
+      termsCheck.addEventListener('click', checkPolicy);
+    }
+
+    leadform1.addEventListener('click', isChecked(leadform1))
   }
 
 }
